@@ -1,2 +1,146 @@
-<h1>Привет, мир!</h1>
-<p>Меня зовут Матвей</p>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Барбершоп «Полюс» — запись на стрижку</title>
+<meta name="description" content="Мужские стрижки, бритьё и уход за бородой. Запись по времени, без очередей.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1b2a49; --red:#c8332b; --ice:#f3f5f8; --white:#fff; --ink:#1d2330; --muted:#5b6475; --line:#d5dae3;
+  --head:'Oswald','Arial Narrow','Impact',sans-serif;
+  --body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:17px/1.6 var(--body);color:var(--ink);background:var(--ice)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+header{background:var(--navy);color:var(--white)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{font:700 24px var(--head);letter-spacing:.04em;text-decoration:none}
+header a.btn{padding:8px 18px;font-size:15px}
+
+.btn{display:inline-block;background:var(--red);color:var(--white);font-weight:600;text-decoration:none;padding:14px 28px;border-radius:4px;border:2px solid var(--red)}
+.btn:hover{background:#a9261f;border-color:#a9261f}
+.btn.ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn.ghost:hover{background:var(--navy);color:var(--white)}
+
+.hero{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;padding:72px 0 80px}
+.hero h1{font:700 clamp(40px,7vw,76px)/1.04 var(--head);text-transform:uppercase;color:var(--navy);margin-bottom:20px}
+.hero p{font-size:20px;color:var(--muted);max-width:30em;margin-bottom:32px}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+
+.pole{position:relative;width:104px;height:360px;border-radius:52px;overflow:hidden;
+  border:6px solid var(--navy);
+  background:repeating-linear-gradient(45deg,var(--red) 0 20px,var(--white) 20px 40px,var(--navy) 40px 60px,var(--white) 60px 80px);
+  background-size:113.137px 113.137px;animation:spin 3.5s linear infinite}
+.pole::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(0,0,0,.3),rgba(255,255,255,.28) 32%,rgba(0,0,0,0) 62%,rgba(0,0,0,.32))}
+@keyframes spin{to{background-position:0 113.137px}}
+@media (prefers-reduced-motion:reduce){.pole{animation:none}}
+
+section{padding:64px 0;border-top:1px solid var(--line)}
+section.dark{background:var(--navy);color:var(--white);border:0}
+h2{font:700 36px/1.1 var(--head);text-transform:uppercase;margin-bottom:32px;color:var(--navy)}
+.dark h2{color:var(--white)}
+
+.prices{list-style:none;padding:0;max-width:640px}
+.prices li{display:flex;align-items:baseline;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.prices .name{font-weight:600}
+.prices .time{color:var(--muted);font-size:15px}
+.prices .sum{margin-left:auto;font:700 22px var(--head);color:var(--red);white-space:nowrap}
+
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;list-style:none;padding:0}
+.team strong{display:block;font:700 24px var(--head);margin-bottom:4px}
+.team span{color:#c3cbdc}
+
+.visit{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px}
+.visit h3{font:700 20px var(--head);margin-bottom:8px;color:var(--navy)}
+.visit p{color:var(--muted)}
+.cta{margin-top:40px}
+
+footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+
+@media (max-width:640px){
+  body{font-size:16px}
+  .hero{grid-template-columns:1fr 64px;gap:20px;padding:44px 0 52px}
+  .pole{width:64px;height:300px;border-width:4px;border-radius:32px}
+  .hero p{font-size:18px}
+  section{padding:48px 0}
+  .prices li{flex-wrap:wrap}
+  .prices .time{order:3;width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#">ПОЛЮС</a>
+    <a class="btn" href="https://t.me/your_barbershop_bot">Записаться</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Хорошая стрижка за 45 минут</h1>
+      <p>Барбершоп «Полюс» на улице Лесной. Запись на точное время, поэтому вы не сидите в очереди.</p>
+      <div class="actions">
+        <a class="btn" href="https://t.me/your_barbershop_bot">Записаться в Telegram</a>
+        <a class="btn ghost" href="#prices">Цены</a>
+      </div>
+    </div>
+    <div class="pole" role="img" aria-label="Барберский столб"></div>
+  </div>
+
+  <section id="prices">
+    <div class="wrap">
+      <h2>Услуги и цены</h2>
+      <ul class="prices">
+        <li><span class="name">Мужская стрижка</span><span class="time">45 мин</span><span class="sum">1 800 ₽</span></li>
+        <li><span class="name">Стрижка машинкой</span><span class="time">30 мин</span><span class="sum">1 200 ₽</span></li>
+        <li><span class="name">Моделирование бороды</span><span class="time">30 мин</span><span class="sum">1 200 ₽</span></li>
+        <li><span class="name">Королевское бритьё</span><span class="time">40 мин</span><span class="sum">1 500 ₽</span></li>
+        <li><span class="name">Стрижка + борода</span><span class="time">75 мин</span><span class="sum">2 800 ₽</span></li>
+        <li><span class="name">Детская стрижка до 12 лет</span><span class="time">30 мин</span><span class="sum">1 100 ₽</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="dark" id="team">
+    <div class="wrap">
+      <h2>Мастера</h2>
+      <ul class="team">
+        <li><strong>Артём</strong><span>Старший барбер, 9 лет в профессии. Классические и фейды.</span></li>
+        <li><strong>Денис</strong><span>Работает с бородами и опасной бритвой.</span></li>
+        <li><strong>Илья</strong><span>Современные стрижки, укладка, детские стрижки.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <div class="wrap">
+      <h2>Как нас найти</h2>
+      <div class="visit">
+        <div><h3>Адрес</h3><p>ул. Лесная, 12<br>вход со двора, вывеска с полосатым столбом</p></div>
+        <div><h3>Часы работы</h3><p>Пн–Сб: 10:00–21:00<br>Вс: 11:00–19:00</p></div>
+        <div><h3>Телефон</h3><p><a href="tel:+70000000000">+7 (000) 000-00-00</a></p></div>
+      </div>
+      <p class="cta"><a class="btn" href="https://t.me/your_barbershop_bot">Выбрать время в Telegram</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Барбершоп «Полюс». Демонстрационная страница.</div>
+</footer>
+
+</body>
+</html>
