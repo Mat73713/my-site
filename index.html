@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#1b2a49; --red:#c8332b; --ice:#f3f5f8; --white:#fff; --ink:#1d2330; --muted:#5b6475; --line:#d5dae3;
+  --deep:#1f2a2e; --accent:#8a6a3b; --wine:#6f2a33; --ice:#eff0ee; --white:#fff; --ink:#1f2326; --muted:#5d6564; --line:#d4d7d3;
   --head:'Oswald','Arial Narrow','Impact',sans-serif;
   --body:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
 }
@@ -18,52 +18,79 @@
 html{scroll-behavior:smooth}
 body{font:17px/1.6 var(--body);color:var(--ink);background:var(--ice)}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
 
-header{background:var(--navy);color:var(--white)}
+header{background:var(--deep);color:var(--white)}
 header .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
-.logo{font:700 24px var(--head);letter-spacing:.04em;text-decoration:none}
+header .right{display:flex;gap:12px;align-items:center}
+.logo{font:700 24px var(--head);letter-spacing:.06em;text-decoration:none}
 header a.btn{padding:8px 18px;font-size:15px}
+.lang{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.55);border-radius:4px;padding:7px 12px;font:600 14px var(--body);cursor:pointer}
+.lang:hover{background:rgba(255,255,255,.12)}
+.lang:focus-visible{outline-color:#fff}
 
-.btn{display:inline-block;background:var(--red);color:var(--white);font-weight:600;text-decoration:none;padding:14px 28px;border-radius:4px;border:2px solid var(--red)}
-.btn:hover{background:#a9261f;border-color:#a9261f}
-.btn.ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
-.btn.ghost:hover{background:var(--navy);color:var(--white)}
+.btn{display:inline-block;background:var(--accent);color:var(--white);font-weight:600;text-decoration:none;padding:14px 28px;border-radius:4px;border:2px solid var(--accent)}
+.btn:hover{background:#725630;border-color:#725630}
+.btn.ghost{background:transparent;color:var(--deep);border-color:var(--deep)}
+.btn.ghost:hover{background:var(--deep);color:var(--white)}
 
 .hero{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;padding:72px 0 80px}
-.hero h1{font:700 clamp(40px,7vw,76px)/1.04 var(--head);text-transform:uppercase;color:var(--navy);margin-bottom:20px}
+.hero h1{font:700 clamp(40px,7vw,76px)/1.04 var(--head);text-transform:uppercase;color:var(--deep);margin-bottom:20px}
 .hero p{font-size:20px;color:var(--muted);max-width:30em;margin-bottom:32px}
 .hero .actions{display:flex;gap:14px;flex-wrap:wrap}
 
 .pole{position:relative;width:104px;height:360px;border-radius:52px;overflow:hidden;
-  border:6px solid var(--navy);
-  background:repeating-linear-gradient(45deg,var(--red) 0 20px,var(--white) 20px 40px,var(--navy) 40px 60px,var(--white) 60px 80px);
-  background-size:113.137px 113.137px;animation:spin 3.5s linear infinite}
+  border:6px solid var(--deep);
+  background:repeating-linear-gradient(45deg,var(--wine) 0 20px,#f4f1ea 20px 40px,var(--deep) 40px 60px,#f4f1ea 60px 80px);
+  background-size:113.137px 113.137px;animation:spin 5s linear infinite}
 .pole::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(0,0,0,.3),rgba(255,255,255,.28) 32%,rgba(0,0,0,0) 62%,rgba(0,0,0,.32))}
+  background:linear-gradient(90deg,rgba(0,0,0,.3),rgba(255,255,255,.25) 32%,rgba(0,0,0,0) 62%,rgba(0,0,0,.32))}
 @keyframes spin{to{background-position:0 113.137px}}
-@media (prefers-reduced-motion:reduce){.pole{animation:none}}
 
 section{padding:64px 0;border-top:1px solid var(--line)}
-section.dark{background:var(--navy);color:var(--white);border:0}
-h2{font:700 36px/1.1 var(--head);text-transform:uppercase;margin-bottom:32px;color:var(--navy)}
+section.dark{background:var(--deep);color:var(--white);border:0}
+h2{font:700 36px/1.1 var(--head);text-transform:uppercase;margin-bottom:32px;color:var(--deep)}
 .dark h2{color:var(--white)}
+
+#snip{padding:20px 0 24px;text-align:center}
+.scissors{position:relative;display:inline-block;background:none;border:0;padding:4px 12px;cursor:pointer;border-radius:8px}
+.scissors svg{width:min(190px,52vw);height:auto;display:block;overflow:visible;filter:drop-shadow(0 4px 5px rgba(31,42,46,.2))}
+.blade{transform-origin:180px 130px;transition:transform .18s ease}
+.blade-a{transform:rotate(-12deg)}
+.blade-b{transform:rotate(12deg)}
+.scissors:hover .blade-a,.scissors:focus-visible .blade-a{transform:rotate(-20deg)}
+.scissors:hover .blade-b,.scissors:focus-visible .blade-b{transform:rotate(20deg)}
+.snap .blade-a{animation:sa .26s ease}
+.snap .blade-b{animation:sb .26s ease}
+@keyframes sa{50%{transform:rotate(-1deg)}}
+@keyframes sb{50%{transform:rotate(1deg)}}
+.cut{position:absolute;top:0;right:6%;opacity:0;font:700 18px var(--head);color:var(--accent);pointer-events:none}
+.cut.show{animation:pop .6s ease-out}
+@keyframes pop{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-22px)}}
+#snip p{color:var(--muted);font-size:15px}
+#snip p.hint{margin-bottom:4px}
 
 .prices{list-style:none;padding:0;max-width:640px}
 .prices li{display:flex;align-items:baseline;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
 .prices .name{font-weight:600}
 .prices .time{color:var(--muted);font-size:15px}
-.prices .sum{margin-left:auto;font:700 22px var(--head);color:var(--red);white-space:nowrap}
+.prices .sum{margin-left:auto;font:700 22px var(--head);color:var(--accent);white-space:nowrap}
 
 .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;list-style:none;padding:0}
 .team strong{display:block;font:700 24px var(--head);margin-bottom:4px}
-.team span{color:#c3cbdc}
+.team span{color:#b9c2bf}
+
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px}
+.reviews blockquote{border-left:3px solid var(--accent);padding-left:20px}
+.reviews p{margin-bottom:12px}
+.reviews cite{font-style:normal;font-weight:600}
+.reviews small{display:block;color:var(--muted);font-size:14px}
 
 .visit{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px}
-.visit h3{font:700 20px var(--head);margin-bottom:8px;color:var(--navy)}
+.visit h3{font:700 20px var(--head);margin-bottom:8px;color:var(--deep)}
 .visit p{color:var(--muted)}
-.cta{margin-top:40px}
+.cta{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap}
 
 footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
 
@@ -75,6 +102,12 @@ footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var
   section{padding:48px 0}
   .prices li{flex-wrap:wrap}
   .prices .time{order:3;width:100%}
+  header a.btn{padding:8px 12px}
+}
+@media (prefers-reduced-motion:reduce){
+  .pole{animation:none}
+  .blade{transition:none}
+  .snap .blade-a,.snap .blade-b,.cut.show{animation:none}
 }
 </style>
 </head>
@@ -83,64 +116,204 @@ footer{padding:28px 0;color:var(--muted);font-size:14px;border-top:1px solid var
 <header>
   <div class="wrap">
     <a class="logo" href="#">ПОЛЮС</a>
-    <a class="btn" href="https://t.me/your_barbershop_bot">Записаться</a>
+    <div class="right">
+      <button class="lang" id="lang" type="button" aria-label="Language / Язык">EN</button>
+      <a class="btn" href="https://t.me/your_barbershop_bot" data-i="book">Записаться</a>
+    </div>
   </div>
 </header>
 
 <main>
   <div class="wrap hero">
     <div>
-      <h1>Хорошая стрижка за 45 минут</h1>
-      <p>Барбершоп «Полюс» на улице Лесной. Запись на точное время, поэтому вы не сидите в очереди.</p>
+      <h1 data-i="h1">Хорошая стрижка за 45 минут</h1>
+      <p data-i="lead">Барбершоп «Полюс» на улице Лесной. Запись на точное время, поэтому вы не сидите в очереди.</p>
       <div class="actions">
-        <a class="btn" href="https://t.me/your_barbershop_bot">Записаться в Telegram</a>
-        <a class="btn ghost" href="#prices">Цены</a>
+        <a class="btn" href="https://t.me/your_barbershop_bot" data-i="cta_tg">Записаться в Telegram</a>
+        <a class="btn ghost" href="#prices" data-i="to_prices">Цены</a>
       </div>
     </div>
-    <div class="pole" role="img" aria-label="Барберский столб"></div>
+    <div class="pole" role="img" data-aria="pole"></div>
   </div>
 
   <section id="prices">
     <div class="wrap">
-      <h2>Услуги и цены</h2>
+      <h2 data-i="h_prices">Услуги и цены</h2>
       <ul class="prices">
-        <li><span class="name">Мужская стрижка</span><span class="time">45 мин</span><span class="sum">1 800 ₽</span></li>
-        <li><span class="name">Стрижка машинкой</span><span class="time">30 мин</span><span class="sum">1 200 ₽</span></li>
-        <li><span class="name">Моделирование бороды</span><span class="time">30 мин</span><span class="sum">1 200 ₽</span></li>
-        <li><span class="name">Королевское бритьё</span><span class="time">40 мин</span><span class="sum">1 500 ₽</span></li>
-        <li><span class="name">Стрижка + борода</span><span class="time">75 мин</span><span class="sum">2 800 ₽</span></li>
-        <li><span class="name">Детская стрижка до 12 лет</span><span class="time">30 мин</span><span class="sum">1 100 ₽</span></li>
+        <li><span class="name" data-i="s1">Мужская стрижка</span><span class="time" data-min="45"></span><span class="sum" data-sum="1800"></span></li>
+        <li><span class="name" data-i="s2">Стрижка машинкой</span><span class="time" data-min="30"></span><span class="sum" data-sum="1200"></span></li>
+        <li><span class="name" data-i="s3">Моделирование бороды</span><span class="time" data-min="30"></span><span class="sum" data-sum="1200"></span></li>
+        <li><span class="name" data-i="s4">Королевское бритьё</span><span class="time" data-min="40"></span><span class="sum" data-sum="1500"></span></li>
+        <li><span class="name" data-i="s5">Стрижка + борода</span><span class="time" data-min="75"></span><span class="sum" data-sum="2800"></span></li>
+        <li><span class="name" data-i="s6">Детская стрижка до 12 лет</span><span class="time" data-min="30"></span><span class="sum" data-sum="1100"></span></li>
       </ul>
+    </div>
+  </section>
+
+  <section id="snip">
+    <div class="wrap">
+      <button class="scissors" id="scissors" type="button" data-aria="snip_aria">
+        <svg viewBox="0 0 420 260" aria-hidden="true">
+          <defs>
+            <linearGradient id="steelA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f6f7"/><stop offset=".5" stop-color="#c3c9cc"/><stop offset="1" stop-color="#8d9599"/></linearGradient>
+            <linearGradient id="steelB" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#f4f6f7"/><stop offset=".5" stop-color="#c3c9cc"/><stop offset="1" stop-color="#8d9599"/></linearGradient>
+            <radialGradient id="brass" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#e2c48d"/><stop offset="1" stop-color="#8a6a3b"/></radialGradient>
+          </defs>
+          <g class="blade blade-b">
+            <path d="M158 140 L410 129 L182 121 L158 124 Z" fill="url(#steelB)" stroke="#1f2a2e" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M186 122.5 L402 129.5" stroke="#fff" stroke-opacity=".75" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M178 124 C150 118 122 100 100 84" fill="none" stroke="#26343a" stroke-width="12" stroke-linecap="round"/>
+            <ellipse cx="78" cy="68" rx="27" ry="21" fill="none" stroke="#26343a" stroke-width="10"/>
+            <path d="M56 58 A27 21 0 0 1 82 47" fill="none" stroke="#8fa2a9" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+          <g class="blade blade-a">
+            <path d="M158 120 L410 131 L182 139 L158 136 Z" fill="url(#steelA)" stroke="#1f2a2e" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M186 137.5 L402 130.5" stroke="#fff" stroke-opacity=".75" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M178 136 C150 142 122 156 100 170" fill="none" stroke="#26343a" stroke-width="12" stroke-linecap="round"/>
+            <ellipse cx="70" cy="185" rx="31" ry="24" fill="none" stroke="#26343a" stroke-width="10"/>
+            <path d="M44 172 A31 24 0 0 1 72 161" fill="none" stroke="#8fa2a9" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+          <circle cx="180" cy="130" r="11" fill="url(#brass)" stroke="#1f2a2e" stroke-width="2"/>
+          <path d="M174 136 L186 124" stroke="#1f2a2e" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span class="cut" id="cut" aria-hidden="true"></span>
+      </button>
+      <p class="hint" data-i="snip_hint">Щёлкните по ножницам</p>
+      <p id="count" aria-live="polite"></p>
     </div>
   </section>
 
   <section class="dark" id="team">
     <div class="wrap">
-      <h2>Мастера</h2>
+      <h2 data-i="h_team">Мастера</h2>
       <ul class="team">
-        <li><strong>Артём</strong><span>Старший барбер, 9 лет в профессии. Классические и фейды.</span></li>
-        <li><strong>Денис</strong><span>Работает с бородами и опасной бритвой.</span></li>
-        <li><strong>Илья</strong><span>Современные стрижки, укладка, детские стрижки.</span></li>
+        <li><strong data-i="t1n">Артём</strong><span data-i="t1d">Старший барбер, 9 лет в профессии. Классические и фейды.</span></li>
+        <li><strong data-i="t2n">Денис</strong><span data-i="t2d">Работает с бородами и опасной бритвой.</span></li>
+        <li><strong data-i="t3n">Илья</strong><span data-i="t3d">Современные стрижки, укладка, детские стрижки.</span></li>
       </ul>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <h2 data-i="h_rev">Отзывы клиентов</h2>
+      <div class="reviews">
+        <blockquote><p data-i="r1">Хожу к Артёму уже год. Стрижка держит форму шесть недель, а записаться всегда можно на удобное время.</p><cite data-i="r1n">Максим</cite><small data-i="r1s">Мужская стрижка</small></blockquote>
+        <blockquote><p data-i="r2">Впервые попробовал королевское бритьё. Горячее полотенце, никакого раздражения. Приду ещё.</p><cite data-i="r2n">Сергей</cite><small data-i="r2s">Королевское бритьё</small></blockquote>
+        <blockquote><p data-i="r3">Привёл сына на первую стрижку. Илья нашёл подход, сын сидел спокойно и остался доволен.</p><cite data-i="r3n">Андрей</cite><small data-i="r3s">Детская стрижка</small></blockquote>
+      </div>
     </div>
   </section>
 
   <section id="contacts">
     <div class="wrap">
-      <h2>Как нас найти</h2>
+      <h2 data-i="h_find">Как нас найти</h2>
       <div class="visit">
-        <div><h3>Адрес</h3><p>ул. Лесная, 12<br>вход со двора, вывеска с полосатым столбом</p></div>
-        <div><h3>Часы работы</h3><p>Пн–Сб: 10:00–21:00<br>Вс: 11:00–19:00</p></div>
-        <div><h3>Телефон</h3><p><a href="tel:+70000000000">+7 (000) 000-00-00</a></p></div>
+        <div><h3 data-i="addr_h">Адрес</h3><p data-i="addr">ул. Лесная, 12<br>вход со двора, вывеска с полосатым столбом</p></div>
+        <div><h3 data-i="hours_h">Часы работы</h3><p data-i="hours">Пн–Сб: 10:00–21:00<br>Вс: 11:00–19:00</p></div>
+        <div><h3 data-i="tel_h">Телефон</h3><p><a href="tel:+70000000000">+7 (000) 000-00-00</a></p></div>
       </div>
-      <p class="cta"><a class="btn" href="https://t.me/your_barbershop_bot">Выбрать время в Telegram</a></p>
+      <p class="cta">
+        <a class="btn" href="https://t.me/your_barbershop_bot" data-i="cta2">Выбрать время в Telegram</a>
+        <a class="btn ghost" href="https://yandex.ru/maps/?text=%D1%83%D0%BB.%20%D0%9B%D0%B5%D1%81%D0%BD%D0%B0%D1%8F%2C%2012" target="_blank" rel="noopener" data-i="map">Открыть на карте</a>
+      </p>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">© 2026 Барбершоп «Полюс». Демонстрационная страница.</div>
+  <div class="wrap" data-i="foot">© 2026 Барбершоп «Полюс». Демонстрационная страница.</div>
 </footer>
 
+<script>
+var T = {
+  ru: {
+    title: "Барбершоп «Полюс» — запись на стрижку",
+    desc: "Мужские стрижки, бритьё и уход за бородой. Запись по времени, без очередей.",
+    book: "Записаться", h1: "Хорошая стрижка за 45 минут",
+    lead: "Барбершоп «Полюс» на улице Лесной. Запись на точное время, поэтому вы не сидите в очереди.",
+    cta_tg: "Записаться в Telegram", to_prices: "Цены", pole: "Барберский столб",
+    snip_aria: "Ножницы: нажмите, чтобы щёлкнуть", snip_hint: "Щёлкните по ножницам", count: "Щелчков: {n}", snap: "Щёлк!",
+    min: "мин",
+    h_prices: "Услуги и цены", s1: "Мужская стрижка", s2: "Стрижка машинкой", s3: "Моделирование бороды",
+    s4: "Королевское бритьё", s5: "Стрижка + борода", s6: "Детская стрижка до 12 лет",
+    h_team: "Мастера",
+    t1n: "Артём", t1d: "Старший барбер, 9 лет в профессии. Классические и фейды.",
+    t2n: "Денис", t2d: "Работает с бородами и опасной бритвой.",
+    t3n: "Илья", t3d: "Современные стрижки, укладка, детские стрижки.",
+    h_rev: "Отзывы клиентов",
+    r1: "Хожу к Артёму уже год. Стрижка держит форму шесть недель, а записаться всегда можно на удобное время.", r1n: "Максим", r1s: "Мужская стрижка",
+    r2: "Впервые попробовал королевское бритьё. Горячее полотенце, никакого раздражения. Приду ещё.", r2n: "Сергей", r2s: "Королевское бритьё",
+    r3: "Привёл сына на первую стрижку. Илья нашёл подход, сын сидел спокойно и остался доволен.", r3n: "Андрей", r3s: "Детская стрижка",
+    h_find: "Как нас найти", addr_h: "Адрес", addr: "ул. Лесная, 12<br>вход со двора, вывеска с полосатым столбом",
+    hours_h: "Часы работы", hours: "Пн–Сб: 10:00–21:00<br>Вс: 11:00–19:00", tel_h: "Телефон",
+    cta2: "Выбрать время в Telegram", map: "Открыть на карте",
+    foot: "© 2026 Барбершоп «Полюс». Демонстрационная страница."
+  },
+  en: {
+    title: "Polus Barbershop — book a haircut",
+    desc: "Men’s haircuts, shaves and beard care. Booking by appointment, no waiting in line.",
+    book: "Book now", h1: "A great haircut in 45 minutes",
+    lead: "Polus Barbershop on Lesnaya Street. You book an exact time, so you never sit in a queue.",
+    cta_tg: "Book on Telegram", to_prices: "Prices", pole: "Barber pole",
+    snip_aria: "Scissors: press to snip", snip_hint: "Click the scissors", count: "Snips: {n}", snap: "Snip!",
+    min: "min",
+    h_prices: "Services and prices", s1: "Men’s haircut", s2: "Clipper cut", s3: "Beard shaping",
+    s4: "Royal shave", s5: "Haircut + beard", s6: "Kids’ haircut, under 12",
+    h_team: "Our barbers",
+    t1n: "Artem", t1d: "Senior barber, 9 years of experience. Classic cuts and fades.",
+    t2n: "Denis", t2d: "Specialist in beards and straight-razor shaves.",
+    t3n: "Ilya", t3d: "Modern cuts, styling and kids’ haircuts.",
+    h_rev: "Client reviews",
+    r1: "I’ve been going to Artem for a year. The cut holds its shape for six weeks, and I can always book a time that suits me.", r1n: "Maxim", r1s: "Men’s haircut",
+    r2: "My first royal shave. Hot towel, no irritation at all. I’ll be back.", r2n: "Sergey", r2s: "Royal shave",
+    r3: "I brought my son for his first haircut. Ilya found the right approach and my son sat calmly and loved it.", r3n: "Andrey", r3s: "Kids’ haircut",
+    h_find: "Find us", addr_h: "Address", addr: "12 Lesnaya St.<br>courtyard entrance, look for the striped pole",
+    hours_h: "Opening hours", hours: "Mon–Sat: 10:00–21:00<br>Sun: 11:00–19:00", tel_h: "Phone",
+    cta2: "Pick a time on Telegram", map: "Open on map",
+    foot: "© 2026 Polus Barbershop. Demo page."
+  }
+};
+
+var lang = "ru", snips = 0;
+try { lang = localStorage.getItem("lang") || "ru"; } catch (e) {}
+if (!T[lang]) lang = "ru";
+
+function count() {
+  document.getElementById("count").textContent = T[lang].count.replace("{n}", snips);
+}
+
+function render() {
+  var d = T[lang];
+  document.documentElement.lang = lang;
+  document.title = d.title;
+  document.querySelector("meta[name=description]").setAttribute("content", d.desc);
+  document.querySelectorAll("[data-i]").forEach(function (e) { e.innerHTML = d[e.dataset.i]; });
+  document.querySelectorAll("[data-aria]").forEach(function (e) { e.setAttribute("aria-label", d[e.dataset.aria]); });
+  document.querySelectorAll("[data-min]").forEach(function (e) { e.textContent = e.dataset.min + " " + d.min; });
+  document.querySelectorAll("[data-sum]").forEach(function (e) { e.textContent = Number(e.dataset.sum).toLocaleString(lang) + " ₽"; });
+  document.getElementById("lang").textContent = lang === "ru" ? "EN" : "RU";
+  count();
+}
+
+document.getElementById("lang").addEventListener("click", function () {
+  lang = lang === "ru" ? "en" : "ru";
+  try { localStorage.setItem("lang", lang); } catch (e) {}
+  render();
+});
+
+var sc = document.getElementById("scissors"), cut = document.getElementById("cut");
+sc.addEventListener("click", function () {
+  snips++;
+  count();
+  cut.textContent = T[lang].snap;
+  [sc, cut].forEach(function (el) { el.classList.remove("snap", "show"); });
+  void sc.offsetWidth;
+  sc.classList.add("snap");
+  cut.classList.add("show");
+});
+
+render();
+</script>
 </body>
 </html>
